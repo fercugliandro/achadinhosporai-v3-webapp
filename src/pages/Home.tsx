@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ProductGrid from '../components/ProductGrid'
+import AdUnit from '../components/AdUnit'
 import { CATEGORIES, SITE_NAME, SITE_DESCRIPTION } from '../lib/config'
 import { Product } from '../types/product'
 
@@ -97,6 +98,15 @@ function Home() {
           </div>
         </section>
 
+        {/* Ad Unit - After Categories */}
+        <section className="max-w-7xl mx-auto px-4 py-6">
+          <AdUnit
+            adSlot="YOUR_AD_SLOT_1"
+            adFormat="horizontal"
+            className="bg-gray-100 rounded-xl p-4 text-center min-h-[100px] flex items-center justify-center"
+          />
+        </section>
+
         {/* Featured Products */}
         {featured.length > 0 && (
           <section id="products" className="max-w-7xl mx-auto px-4 py-12">
@@ -104,12 +114,30 @@ function Home() {
           </section>
         )}
 
+        {/* Ad Unit - After Featured Products */}
+        <section className="max-w-7xl mx-auto px-4 py-6">
+          <AdUnit
+            adSlot="YOUR_AD_SLOT_2"
+            adFormat="rectangle"
+            className="bg-gray-100 rounded-xl p-4 text-center min-h-[250px] flex items-center justify-center"
+          />
+        </section>
+
         {/* Best Sellers */}
         {bestSellers.length > 0 && (
           <section className="max-w-7xl mx-auto px-4 py-12 bg-white">
             <ProductGrid products={bestSellers} title="🔥 Mais Vendidos" />
           </section>
         )}
+
+        {/* Ad Unit - Before All Products */}
+        <section className="max-w-7xl mx-auto px-4 py-6">
+          <AdUnit
+            adSlot="YOUR_AD_SLOT_3"
+            adFormat="auto"
+            className="bg-gray-100 rounded-xl p-4 text-center min-h-[100px] flex items-center justify-center"
+          />
+        </section>
 
         {/* All Products */}
         <section className="max-w-7xl mx-auto px-4 py-12">

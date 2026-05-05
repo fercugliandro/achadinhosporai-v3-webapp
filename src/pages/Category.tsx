@@ -5,6 +5,7 @@ import Footer from '../components/Footer'
 import ProductGrid from '../components/ProductGrid'
 import { CATEGORIES } from '../lib/config'
 import { Product } from '../types/product'
+import AdUnit from '../components/AdUnit'
 
 function Category() {
   const { slug } = useParams<{ slug: string }>()
@@ -77,7 +78,26 @@ function Category() {
               {products.length} {products.length === 1 ? 'produto encontrado' : 'produtos encontrados'}
             </p>
           </div>
+
+          {/* Ad Unit - Top of Category */}
+          <div className="mb-6">
+            <AdUnit
+              adSlot="YOUR_AD_SLOT_4"
+              adFormat="horizontal"
+              className="bg-gray-100 rounded-xl p-4 text-center min-h-[100px] flex items-center justify-center"
+            />
+          </div>
+
           <ProductGrid products={products} />
+
+          {/* Ad Unit - Bottom of Category */}
+          <div className="mt-8">
+            <AdUnit
+              adSlot="YOUR_AD_SLOT_5"
+              adFormat="rectangle"
+              className="bg-gray-100 rounded-xl p-4 text-center min-h-[250px] flex items-center justify-center"
+            />
+          </div>
         </div>
       </main>
       <Footer />
