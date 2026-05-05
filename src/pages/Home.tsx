@@ -101,7 +101,7 @@ function Home() {
         {/* Ad Unit - After Categories */}
         <section className="max-w-7xl mx-auto px-4 py-6">
           <AdUnit
-            adSlot="adunit_home_1"
+            adSlot="4555302221"
             adFormat="horizontal"
             className="bg-gray-100 rounded-xl p-4 text-center min-h-[100px] flex items-center justify-center"
           />
@@ -117,7 +117,7 @@ function Home() {
         {/* Ad Unit - After Featured Products */}
         <section className="max-w-7xl mx-auto px-4 py-6">
           <AdUnit
-            adSlot="adunit_home_2"
+            adSlot="7047717127"
             adFormat="rectangle"
             className="bg-gray-100 rounded-xl p-4 text-center min-h-[250px] flex items-center justify-center"
           />
@@ -133,7 +133,7 @@ function Home() {
         {/* Ad Unit - Before All Products */}
         <section className="max-w-7xl mx-auto px-4 py-6">
           <AdUnit
-            adSlot="adunit_home_3"
+            adSlot="5620971889"
             adFormat="auto"
             className="bg-gray-100 rounded-xl p-4 text-center min-h-[100px] flex items-center justify-center"
           />

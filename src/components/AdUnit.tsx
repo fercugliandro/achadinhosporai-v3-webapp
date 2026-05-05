@@ -13,7 +13,7 @@ declare global {
   }
 }
 
-function AdUnit({ adSlot, adFormat = 'auto', style, className }: AdUnitProps) {
+function AdUnit({ adSlot, adFormat = 'horizontal', style, className }: AdUnitProps) {
   const adRef = useRef<HTMLModElement>(null)
   const pushed = useRef(false)
 
