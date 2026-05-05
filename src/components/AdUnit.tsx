@@ -24,7 +24,7 @@ function AdUnit({ adSlot, adFormat = 'auto', style, className }: AdUnitProps) {
       const rect = adRef.current?.getBoundingClientRect()
       if (rect && rect.width > 0 && rect.height > 0) {
         try {
-          window.adsbygoogle.push({})
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
           pushed.current = true
         } catch (e) {
           console.error('AdSense error:', e)
@@ -41,7 +41,7 @@ function AdUnit({ adSlot, adFormat = 'auto', style, className }: AdUnitProps) {
       <ins
         ref={adRef}
         className="adsbygoogle"
-        style={{ display: 'block', ...style }}
+        style={{ display: 'block', width: '100%' }}
         data-ad-client="ca-pub-9806291450823898"
         data-ad-slot={adSlot}
         data-ad-format={adFormat}
