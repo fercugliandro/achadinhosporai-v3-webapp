@@ -41,7 +41,7 @@ function AdUnit({ adSlot, adFormat = 'auto', style, className }: AdUnitProps) {
       <ins
         ref={adRef}
         className="adsbygoogle"
-        style={{ display: 'block', width: '100%' }}
+        style={{ display: 'block', width: '100%', ...style }}
         data-ad-client="ca-pub-9806291450823898"
         data-ad-slot={adSlot}
         data-ad-format={adFormat}
