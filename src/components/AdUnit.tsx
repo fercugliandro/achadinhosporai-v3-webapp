@@ -17,24 +17,33 @@ function AdUnit({ adSlot, adFormat = 'auto', style, className }: AdUnitProps) {
   const adRef = useRef<HTMLModElement>(null)
   const pushed = useRef(false)
 
+  // useEffect(() => {
+  //   if (!adRef.current || pushed.current || !window.adsbygoogle) return
+
+  //   const checkSize = () => {
+  //     const rect = adRef.current?.getBoundingClientRect()
+  //     if (rect && rect.width > 0 && rect.height > 0) {
+  //       try {
+  //         ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+  //         pushed.current = true
+  //       } catch (e) {
+  //         console.error('AdSense error:', e)
+  //       }
+  //     }
+  //   }
+
+  //   const timer = setTimeout(checkSize, 200)
+  //   return () => clearTimeout(timer)
+  // }, [])
   useEffect(() => {
-    if (!adRef.current || pushed.current || !window.adsbygoogle) return
-
-    const checkSize = () => {
-      const rect = adRef.current?.getBoundingClientRect()
-      if (rect && rect.width > 0 && rect.height > 0) {
-        try {
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-          pushed.current = true
-        } catch (e) {
-          console.error('AdSense error:', e)
-        }
-      }
+    if (pushed.current) return; // evita push duplo no StrictMode
+    pushed.current = true;
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {
+      console.error('AdSense error:', e);
     }
-
-    const timer = setTimeout(checkSize, 200)
-    return () => clearTimeout(timer)
-  }, [])
+  }, []);
 
   return (
     <div className={className || ''}>
@@ -47,9 +56,6 @@ function AdUnit({ adSlot, adFormat = 'auto', style, className }: AdUnitProps) {
         data-ad-format={adFormat}
         data-full-width-responsive="true"
       />
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({ });
-      </script>
     </div>
   )
 }

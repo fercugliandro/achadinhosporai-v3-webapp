@@ -103,7 +103,6 @@ function Home() {
           <AdUnit
             adSlot="4555302221"
             adFormat="horizontal"
-            className="bg-gray-100 rounded-xl p-4 text-center min-h-[100px]"
           />
         </section>
 
@@ -119,7 +118,6 @@ function Home() {
           <AdUnit
             adSlot="7047717127"
             adFormat="rectangle"
-            className="bg-gray-100 rounded-xl p-4 text-center min-h-[250px]"
           />
         </section>
 
@@ -135,7 +133,6 @@ function Home() {
           <AdUnit
             adSlot="5620971889"
             adFormat="auto"
-            className="bg-gray-100 rounded-xl p-4 text-center min-h-[100px]"
           />
         </section>
 
