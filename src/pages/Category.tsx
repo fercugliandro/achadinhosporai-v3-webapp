@@ -81,22 +81,22 @@ function Category() {
 
           {/* Ad Unit - Top of Category */}
           <div className="mb-6">
-            <AdUnit
-              adSlot="2994808548"
-              adFormat="horizontal"
-              className="bg-gray-100 rounded-xl p-4 text-center min-h-[100px] flex items-center justify-center"
-            />
+          <AdUnit
+            adSlot="2994808548"
+            adFormat="horizontal"
+            className="bg-gray-100 rounded-xl p-4 text-center min-h-[100px]"
+          />
           </div>
 
           <ProductGrid products={products} />
 
           {/* Ad Unit - Bottom of Category */}
           <div className="mt-8">
-            <AdUnit
-              adSlot="1681726873"
-              adFormat="rectangle"
-              className="bg-gray-100 rounded-xl p-4 text-center min-h-[250px] flex items-center justify-center"
-            />
+          <AdUnit
+            adSlot="1681726873"
+            adFormat="rectangle"
+            className="bg-gray-100 rounded-xl p-4 text-center min-h-[250px]"
+          />
           </div>
         </div>
       </main>
