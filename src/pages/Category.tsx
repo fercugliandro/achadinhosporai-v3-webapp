@@ -82,7 +82,7 @@ function Category() {
           {/* Ad Unit - Top of Category */}
           <div className="mb-6">
             <AdUnit
-              adSlot="YOUR_AD_SLOT_4"
+              adSlot="adunit_category_1"
               adFormat="horizontal"
               className="bg-gray-100 rounded-xl p-4 text-center min-h-[100px] flex items-center justify-center"
             />
@@ -93,7 +93,7 @@ function Category() {
           {/* Ad Unit - Bottom of Category */}
           <div className="mt-8">
             <AdUnit
-              adSlot="YOUR_AD_SLOT_5"
+              adSlot="adunit_category_2"
               adFormat="rectangle"
               className="bg-gray-100 rounded-xl p-4 text-center min-h-[250px] flex items-center justify-center"
             />
