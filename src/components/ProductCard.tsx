@@ -10,8 +10,8 @@ function ProductCard({ product, horizontal }: { product: Product; horizontal?: b
   if (horizontal) {
     return (
       <div className="flex flex-col sm:flex-row bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden border border-gray-100">
-        <div className="relative w-full sm:w-48 h-48 sm:h-auto flex-shrink-0">
-          <img src={product.image} alt={product.name} className="w-full h-full object-contain p-4" />
+        <div className="relative h-48 w-full sm:w-48 sm:h-auto flex-shrink-0 bg-gray-50 flex items-center justify-center">
+          <img src={product.image} alt={product.name} className="max-h-48 max-w-full object-contain p-4" />
           {discount > 0 && (
             <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
               -{discount}%
@@ -46,8 +46,8 @@ function ProductCard({ product, horizontal }: { product: Product; horizontal?: b
 
   return (
     <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden border border-gray-100 flex flex-col">
-      <div className="relative aspect-square">
-        <img src={product.image} alt={product.name} className="w-full h-full object-contain p-4" />
+      <div className="relative h-64 flex items-center justify-center bg-gray-50">
+        <img src={product.image} alt={product.name} className="max-h-full max-w-full object-contain p-4" />
         {discount > 0 && (
           <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
             -{discount}%

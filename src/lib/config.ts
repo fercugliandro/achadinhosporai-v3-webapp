@@ -1,5 +1,5 @@
-export const SITE_NAME = 'Achadinhos'
-export const SITE_DESCRIPTION = 'Os melhores achadinhos da Amazon com preços imperdíveis'
+export const SITE_NAME = 'Achadinhos por Aí'
+export const SITE_DESCRIPTION = 'Os melhores achadinhos da Amazon e outros Sellers com preços imperdíveis'
 
 export const CATEGORIES = [
   { slug: 'tech', name: 'Tecnologia', emoji: '💻' },

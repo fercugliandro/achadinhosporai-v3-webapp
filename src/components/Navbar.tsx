@@ -7,7 +7,7 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="text-2xl font-bold text-orange-600">
-            Achadinhos
+            Achadinhos por Aí
           </Link>
 
           <div className="hidden md:flex space-x-6">
@@ -21,13 +21,6 @@ function Navbar() {
               </Link>
             ))}
           </div>
-
-          <a
-            href="#products"
-            className="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition"
-          >
-            Ver Ofertas
-          </a>
         </div>
       </div>
     </nav>
