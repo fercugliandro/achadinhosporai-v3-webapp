@@ -9,3 +9,7 @@ export function getAffiliateUrl(url: string): string {
     return url
   }
 }
+
+export function getShortUrl(id: string, baseUrl: string = window.location.origin): string {
+  return `${baseUrl}/go/${id}`
+}
