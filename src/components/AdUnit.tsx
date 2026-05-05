@@ -18,18 +18,26 @@ function AdUnit({ adSlot, adFormat = 'auto', style, className }: AdUnitProps) {
   const pushed = useRef(false)
 
   useEffect(() => {
-    if (adRef.current && !pushed.current && window.adsbygoogle) {
-      try {
-        window.adsbygoogle.push({})
-        pushed.current = true
-      } catch (e) {
-        console.error('AdSense error:', e)
+    if (!adRef.current || pushed.current || !window.adsbygoogle) return
+
+    const checkSize = () => {
+      const rect = adRef.current?.getBoundingClientRect()
+      if (rect && rect.width > 0 && rect.height > 0) {
+        try {
+          window.adsbygoogle.push({})
+          pushed.current = true
+        } catch (e) {
+          console.error('AdSense error:', e)
+        }
       }
     }
+
+    const timer = setTimeout(checkSize, 200)
+    return () => clearTimeout(timer)
   }, [])
 
   return (
-    <div className={`ad-container ${className || ''}`}>
+    <div className={className || ''}>
       <ins
         ref={adRef}
         className="adsbygoogle"
