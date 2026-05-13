@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Product } from '../types/product'
 import { getAffiliateUrl } from '../lib/amazon'
 
@@ -10,17 +11,19 @@ function ProductCard({ product, horizontal }: { product: Product; horizontal?: b
   if (horizontal) {
     return (
       <div className="flex flex-col sm:flex-row bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden border border-gray-100">
-        <div className="relative h-48 w-full sm:w-48 sm:h-auto flex-shrink-0 bg-gray-50 flex items-center justify-center">
+        <Link to={`/product/${product.slug}`} className="relative h-48 w-full sm:w-48 sm:h-auto flex-shrink-0 bg-gray-50 flex items-center justify-center">
           <img src={product.image} alt={product.name} className="max-h-48 max-w-full object-contain p-4" />
           {discount > 0 && (
             <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
               -{discount}%
             </span>
           )}
-        </div>
+        </Link>
         <div className="p-4 flex-1 flex flex-col justify-between">
           <div>
-            <h3 className="font-semibold text-gray-900 mb-1">{product.name}</h3>
+            <Link to={`/product/${product.slug}`} className="hover:underline">
+              <h3 className="font-semibold text-gray-900 mb-1">{product.name}</h3>
+            </Link>
             {product.description && (
               <p className="text-sm text-gray-600 mb-2">{product.description}</p>
             )}
@@ -46,7 +49,7 @@ function ProductCard({ product, horizontal }: { product: Product; horizontal?: b
 
   return (
     <div className="bg-white rounded-2xl shadow-md hover:shadow-xl transition overflow-hidden border border-gray-100 flex flex-col">
-      <div className="relative h-64 flex items-center justify-center bg-gray-50">
+      <Link to={`/product/${product.slug}`} className="relative h-64 flex items-center justify-center bg-gray-50">
         <img src={product.image} alt={product.name} className="max-h-full max-w-full object-contain p-4" />
         {discount > 0 && (
           <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
@@ -58,9 +61,11 @@ function ProductCard({ product, horizontal }: { product: Product; horizontal?: b
             Mais Vendido
           </span>
         )}
-      </div>
+      </Link>
       <div className="p-4 flex-1 flex flex-col">
-        <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2">{product.name}</h3>
+        <Link to={`/product/${product.slug}`} className="hover:underline">
+          <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2">{product.name}</h3>
+        </Link>
         <div className="mt-auto">
           <div className="flex items-center gap-2 mb-3">
             <span className="text-xl font-bold text-orange-600">R$ {product.price.toFixed(2)}</span>
