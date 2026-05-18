@@ -3,9 +3,17 @@ import { useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ProductGrid from '../components/ProductGrid'
+import type { Category } from '../lib/config'
 import { CATEGORIES } from '../lib/config'
 import { Product } from '../types/product'
 import AdUnit from '../components/AdUnit'
+
+const SUBCATEGORIES: Record<string, { slug: string; name: string; emoji: string }[]> = {
+  pets: [
+    { slug: 'pets_cachorro', name: 'Cachorro', emoji: '🐕' },
+    { slug: 'pets_gato', name: 'Gato', emoji: '🐱' },
+  ],
+}
 
 function Category() {
   const { slug } = useParams<{ slug: string }>()
@@ -37,7 +45,8 @@ function Category() {
           data = await res.json()
         }
 
-        const filtered = data.filter(p => p.category === slug)
+        const match = (category as Category)?.match ?? [slug]
+        const filtered = data.filter(p => match.includes(p.category))
         setProducts(filtered)
       } catch (error) {
         console.error('Error loading products:', error)
@@ -51,8 +60,15 @@ function Category() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p>Carregando...</p>
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-1 flex items-center justify-center">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-10 h-10 border-[3px] border-orange-500 border-t-transparent rounded-full animate-spin" />
+            <p className="text-slate-500 font-medium text-sm">Carregando produtos...</p>
+          </div>
+        </main>
+        <Footer />
       </div>
     )
   }
@@ -65,16 +81,19 @@ function Category() {
     )
   }
 
+  const subcategories = slug ? SUBCATEGORIES[slug] : undefined
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-1">
         <div className="max-w-7xl mx-auto px-4 py-12">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900">
+          <div className="text-center mb-10">
+            <span className="text-xs font-semibold text-orange-500 uppercase tracking-widest">Categoria</span>
+            <h1 className="text-3xl md:text-4xl font-bold text-slate-800 mt-1">
               {category.emoji} {category.name}
             </h1>
-            <p className="text-gray-600 mt-2">
+            <p className="text-slate-500 text-sm mt-2">
               {products.length} {products.length === 1 ? 'produto encontrado' : 'produtos encontrados'}
             </p>
           </div>
@@ -88,7 +107,19 @@ function Category() {
           />
           </div>
 
-          <ProductGrid products={products} />
+          {subcategories ? (
+            subcategories.map((sub: { slug: string; name: string; emoji: string }) => {
+              const subProducts = products.filter(p => p.category === sub.slug)
+              if (subProducts.length === 0) return null
+              return (
+                <div key={sub.slug} className="mb-10">
+                  <ProductGrid products={subProducts} title={`${sub.emoji} ${sub.name}`} />
+                </div>
+              )
+            })
+          ) : (
+            <ProductGrid products={products} />
+          )}
 
           {/* Ad Unit - Bottom of Category */}
           <div className="mt-8">

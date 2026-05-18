@@ -5,6 +5,11 @@
   --brand: #f97316;
   --brand-dark: #ea580c;
   --brand-light: #fff7ed;
+  --brand-50: #fff7ed;
+  --brand-100: #ffedd5;
+  --brand-200: #fed7aa;
+  --brand-500: #f97316;
+  --brand-600: #ea580c;
 }
 
 * {
@@ -16,6 +21,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #f8fafc;
+  color: #0f172a;
+}
+
+::selection {
+  background: var(--brand-200);
   color: #0f172a;
 }
 
@@ -31,4 +41,17 @@ body {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
 }

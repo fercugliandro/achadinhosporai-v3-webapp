@@ -5,7 +5,8 @@ export interface Product {
   price: number
   originalPrice?: number
   image: string
-  amazonUrl: string
+  productUrl: string
+  source: string
   category: string
   featured?: boolean
   bestSeller?: boolean
