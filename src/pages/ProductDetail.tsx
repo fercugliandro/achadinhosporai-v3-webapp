@@ -73,11 +73,13 @@ function ProductDetail() {
     )
   }
 
-  const affiliateUrl = getAffiliateUrl(product.amazonUrl)
+  const affiliateUrl = getAffiliateUrl(product.productUrl, product.source)
   const category = CATEGORIES.find((c) => c.slug === product.category)
-  const discount = product.originalPrice
-    ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)
+  const hasDiscount = product.originalPrice && product.originalPrice > product.price
+  const discount = hasDiscount
+    ? Math.round(((product.originalPrice! - product.price) / product.originalPrice!) * 100)
     : 0
+  const storeName = product.source === 'amazon' ? 'Amazon' : product.source === 'mercadolivre' ? 'Mercado Livre' : 'Loja'
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -120,7 +122,7 @@ function ProductDetail() {
                       -{discount}%
                     </span>
                   )}
-                  {product.bestSeller && (
+                  {product.bestSeller && discount === 0 && (
                     <span className="text-sm font-bold bg-yellow-500 text-white px-3 py-1 rounded-full">
                       Mais Vendido
                     </span>
@@ -137,7 +139,7 @@ function ProductDetail() {
                   <span className="text-4xl font-bold text-orange-600">
                     R$ {product.price.toFixed(2)}
                   </span>
-                  {product.originalPrice && (
+                  {product.originalPrice && product.originalPrice > product.price && (
                     <span className="text-xl text-gray-400 line-through">
                       R$ {product.originalPrice.toFixed(2)}
                     </span>
@@ -150,7 +152,7 @@ function ProductDetail() {
                   rel="nofollow noopener"
                   className="inline-block bg-orange-600 text-white text-center py-4 px-8 rounded-xl text-lg font-bold hover:bg-orange-700 transition"
                 >
-                  Ver Oferta na Amazon →
+                  Comprar na {storeName} →
                 </a>
 
                 <p className="text-xs text-gray-400 mt-4">
